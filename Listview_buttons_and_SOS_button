@@ -1,0 +1,201 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'friends_menu_widget.dart';
+import 'sos_button.dart';
+
+class FriendsMenu extends StatefulWidget {
+  const FriendsMenu({super.key});
+
+  @override
+  State<FriendsMenu> createState() => _FriendsMenuState();
+}
+
+class _FriendsMenuState extends State<FriendsMenu> {
+  List<FriendsMenuWidget> friends = allusers;
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: Stack(
+          children: [
+            Container(
+            width: 100,
+            height: double.infinity,
+            child: Stack(children: <Widget>[
+              Column(children: [
+                SizedBox(
+                    width: 100,
+                    height: 20,
+                  ),
+                  CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Colors.amber,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.person,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+                  SizedBox(
+                    width: 100,
+                    height: 20,
+                  ),
+                CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Colors.amber,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.people,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+                  SizedBox(
+                    width: 100,
+                    height: 20,
+                  ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: friends.length,
+                    itemBuilder: (context, index) {
+                      final friend = friends[index];
+        
+                      return buildFriendListTile(friend);
+                    },
+                  ),
+                ),
+              ]),
+          
+            ]),
+          ),
+          Container(
+                margin: const EdgeInsets.only(
+                    left: 100, top: 500, right: 100, bottom: 15),
+                //color: Colors.amber[600],
+                child: Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: null,
+                      child: Text("SOS"),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50))),
+                          minimumSize:
+                              Size(MediaQuery.of(context).size.width / 1.6, 50),
+                          primary: Colors.deepOrange),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        openDialog();
+                      },
+                      child: Text("SOS"),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(50))),
+                        minimumSize:
+                            Size(MediaQuery.of(context).size.width / 8, 50),
+                        primary: Colors.deepOrange,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+        ]
+        ),
+      );
+
+  Widget buildFriendListTile(FriendsMenuWidget friend) => ListTile(
+        contentPadding: const EdgeInsets.all(16),
+        leading: CircleAvatar(
+          backgroundColor: Colors.red,
+          child: IconButton(
+            icon: Image.network(
+              friend.img,
+              fit: BoxFit.cover,
+            ),
+            
+            iconSize: 50,
+            onPressed: () {},
+          ),
+        ),
+      );
+
+  Future openDialog() => showDialog(
+      context: context,
+      builder: (context) => SimpleDialog(
+            children: [
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text("SOS"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                      minimumSize:
+                          Size(MediaQuery.of(context).size.width / 6, 50),
+                      primary: Colors.deepOrange,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text("SOS"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                      minimumSize:
+                          Size(MediaQuery.of(context).size.width / 6, 50),
+                      primary: Colors.deepOrange,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text("SOS"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                      minimumSize:
+                          Size(MediaQuery.of(context).size.width / 6, 50),
+                      primary: Colors.deepOrange,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text("SOS"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                      minimumSize:
+                          Size(MediaQuery.of(context).size.width / 6, 50),
+                      primary: Colors.deepOrange,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ));
+}
