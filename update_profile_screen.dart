@@ -73,7 +73,7 @@ class UpdatedProfileScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                width: 200,
+                width: 100,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
@@ -89,7 +89,7 @@ class UpdatedProfileScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 200,
+                width: 100,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
