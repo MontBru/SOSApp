@@ -15,4 +15,6 @@ Alert е мобилно приложение. Главната му цел е д
 - [Dart](https://dart.dev/)
 
 ### Backend
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
 - [Firebase](https://firebase.google.com/)
