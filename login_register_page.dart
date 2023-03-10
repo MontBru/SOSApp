@@ -1,4 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../auth.dart';
@@ -33,17 +34,20 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> userSetup(String username, String email) async {
+    String? uid = FirebaseAuth.instance.currentUser?.uid.toString();
     User_info user = new User_info(
       username: username,
       email: email,
+      uid: uid,
+      token: await FirebaseMessaging.instance.getToken(),
+      friends: [],
       latitude: 0,
       longitude: 0,
     );
-    String? uid = FirebaseAuth.instance.currentUser?.uid.toString();
 
     //now below I am getting an instance of firebaseiestore then getting the user collection
     //now I am creating the document if not already exist and setting the data.
-    final ref = FB.collection('users').doc(uid).withConverter(
+    final ref = FBI.collection('users').doc(uid).withConverter(
       fromFirestore: User_info.fromFirestore,
       toFirestore: (User_info user_info, _) => user_info.toFirestore(),
     );
