@@ -1,25 +1,32 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:project/WIdgetTree.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'map.dart';
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async
+{
+  print('Handling a background message ${message.messageId}');
+}
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await FirebaseMessaging.instance.getInitialMessage();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp ({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home:Scaffold(
-        body:Map()
-      )
+  Widget build(BuildContext context){
+    return MaterialApp(
+      title: 'demo',
+      theme:ThemeData(
+        primarySwatch: Colors.deepOrange,
+      ) ,
+      home: const MainPage(),
     );
   }
 }
