@@ -7,10 +7,12 @@ Alert е мобилно приложение. Главната му цел е д
 # Презентация:
 Линк към презентацията -> [Презентация](https://docs.google.com/presentation/d/1YOVE1kmnQldrsgMx8r5M3MxW6_j6HhwLP0zq__mpfM0/edit?usp=sharing)
 
-# Frontend
 
-Frontend на приложението е написан на Flutter и Dart. 
+# Използвани технологии
+
+# Frontend
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
 
 # Backend
-
-Backend е написан на Firebase.
+- [Firebase](https://firebase.google.com/)
