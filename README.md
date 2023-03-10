@@ -10,9 +10,9 @@ Alert е мобилно приложение. Главната му цел е д
 
 # Използвани технологии
 
-# Frontend
+### Frontend
 - [Flutter](https://flutter.dev/)
 - [Dart](https://dart.dev/)
 
-# Backend
+### Backend
 - [Firebase](https://firebase.google.com/)
